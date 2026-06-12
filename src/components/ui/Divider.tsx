@@ -35,9 +35,23 @@ export function Sub({ children }: { children: ReactNode }) {
   )
 }
 
-export function Chip({ children }: { children: ReactNode }) {
+export function Chip({
+  children,
+  variant = 'default',
+}: {
+  children: ReactNode
+  variant?: 'default' | 'grn' | 'amb'
+}) {
+  const styles = {
+    default: 'border-white/10 text-zinc-300',
+    grn: 'border-green-500/30 text-green-400',
+    amb: 'border-amber-500/30 text-amber-400',
+  }
+
   return (
-    <span className="inline-flex items-center rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-300">
+    <span
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs ${styles[variant]}`}
+    >
       {children}
     </span>
   )
